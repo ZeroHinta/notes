@@ -1,5 +1,7 @@
 # component-store
 
+---
+
 ## 概念
 
 >状态管理器，想象成localstorage，然后可以做各种处理，类似于创建了一个用来存储数据的服务，然后有类似subject的属性，可以订阅和发布，依托于ngRx，比ngRx轻量化，在组件中使用
@@ -20,7 +22,7 @@
 
 ### effect
 
->处理异步请求的地方，会结合rxjs中的**tap**操作符处理异步请求并在异步请求中更新[state](#state)，然后返回一个***Observable***对象，示例如下：
+>处理异步请求的地方，会结合rxjs中的**tap**操作符处理异步请求并在异步请求中更新[state](#state)，然后返回一个**Observable**对象，示例如下：
 
 ```ts
 readonly loadUsers = this.effect<void>(
@@ -45,6 +47,9 @@ readonly loadUsers = this.effect<void>(
 
 ## 监听属性的变化
 
->将select处理过后的值转换成***Observable***对象后可以监听对应的变化
+>将[select](#selectselectsignal)处理过后的值转换成**Observable***对象后可以监听对应的变化
 
 ## 使用细节
+
+>创建好store之后要注入到需要使用的组件中  
+>生命周期和注入的组件相关，不同的独立组件不共享状态，如果需要共享，需要在父组件注入
